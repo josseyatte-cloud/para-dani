@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe4e1; /* Rosa tierno */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            color: #d63384;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #btn-si {
+            background-color: #ff4d6d;
+            color: white;
+            font-weight: bold;
+        }
+
+        #btn-no {
+            background-color: #adb5bd;
+            color: white;
+            position: relative;
+        }
+
+        /* Corazones animados */
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: float 5s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>¡Hola, amor! ❤️</h1>
+        <p>Quiero decirte que te amo mucho, que cada dia me enamoro mas y mas de ti, me haces la persona mas feliz, quisiera poder estar contigo y cmpartir cada dia de mi vida, pero aun no se puede solo se que cada dia hare lo posible para enamorarte mas y mas...</p>
+        <h2>¿Quieres pasar este 14 de febrero conmigo?</h2>
+        
+        <div class="buttons">
+            <button id="btn-si">¡SÍ, ACEPTO! 😍</button>
+            <button id="btn-no">Nop 😢</button>
+        </div>
+    </div>
+
+    <script>
+        const btnSi = document.getElementById('btn-si');
+        const btnNo = document.getElementById('btn-no');
+
+        // Al hacer clic en Sí
+        btnSi.addEventListener('click', () => {
+            alert('¡Sabia que ibas a decir que si te amo ❤️');
+            window.location.href = "https://www.google.com/search?q=gatos+enamorados+gif"; // Opcional: Redirige a algo lindo
+        });
+
+        // El botón No se mueve cuando intentan tocarlo
+        btnNo.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+            btnNo.style.position = 'absolute';
+            btnNo.style.left = x + 'px';
+            btnNo.style.top = y + 'px';
+        });
+
+        // Crear corazones flotantes
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
